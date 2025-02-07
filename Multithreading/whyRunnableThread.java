@@ -1,4 +1,4 @@
-package MultithreadingKing;
+package Multithreading;
 
 class Meter {
     int cnt = 0;

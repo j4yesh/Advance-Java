@@ -1,16 +1,20 @@
-package MultithreadingKing;
+package Multithreading;
 
 class Pen{
     synchronized void writingWithPen(Paper paper){
         System.out.println(Thread.currentThread().getName());
-        System.out.println("Is writing ");
+        for(int i=0;i<10;i++){
+            System.out.println("Is writing on paper"+paper.hashCode()+ " and "+this.hashCode());
+        }
     }
 }
 
 class Paper{
     synchronized void writingOnPaper(Pen pen){
         System.out.println(Thread.currentThread().getName());
-        System.out.println("Is writing with Pen"+pen.hashCode()+ " and "+this.hashCode());
+        for(int i=0;i<10;i++){
+            System.out.println("Is writing with Pen"+pen.hashCode()+ " and "+this.hashCode());
+        }
     }
 }
 
@@ -30,7 +34,7 @@ public class simulationDeadlock {
                 paper.writingOnPaper(pen);
             }
         };
-        new Thread(Aperson).start();
         new Thread(Bperson).start();
+        new Thread(Aperson).start();
     }
 }
